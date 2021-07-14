@@ -5,18 +5,33 @@
     <title>Edit user</title>
 </head>
 <body>
-<form th:method="PATCH" th:action="@{/{id} (id=${user.getId()})}" th:object="${user}">
-        <label for="name">Id</label>
-        <input type="text" th:field="*{id}" id="name"/>
+<form th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">
+        <label for="id">Id</label>
+        <input readonly type="text" th:field="*{id}" id="id"/>
         <br/>
 
-        <label for="surname">Username</label>
-        <input type="text" th:field="*{username}" id="surname"/>
+        <label for="name">Name</label>
+        <input type="text" th:field="*{name}" id="name"/>
         <br/>
 
-        <label for="name">Role</label>
-        <input type="text" th:field="*{roles}" id="email"/>
+        <label for="surname">Surname</label>
+        <input type="text" th:field="*{surname}" id="surname"/>
         <br/>
+
+        <label for="email">Email</label>
+        <input type="text" th:field="*{email}" id="email"/>
+        <br/>
+
+        <label for="pass">Password</label>
+        <input type="password" th:field="*{password}" id="pass"/>
+        <br/>
+
+<!--        <label for="roles">Role</label>-->
+<!--        <select required type="text" multiple name="roles" id="roles">-->
+<!--                <option value="ROLE_ADMIN">ADMIN</option>-->
+<!--                <option value="ROLE_USER">USER</option>-->
+<!--        </select>-->
+<!--        <br/>-->
 
         <input type="submit" value="Edit">
 </form>

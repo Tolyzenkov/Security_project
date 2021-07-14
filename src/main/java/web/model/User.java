@@ -19,6 +19,8 @@ public class User implements UserDetails {
     private long id;
 
     private String name;
+    private String surname;
+    private String email;
     private String password;
 
 
@@ -28,9 +30,11 @@ public class User implements UserDetails {
 
     public User() {}
 
-    public User(long id, String name, String password, Set<Role> roles) {
+    public User(long id, String name, String surname, String email, String password, Set<Role> roles) {
         this.id = id;
         this.name = name;
+        this.surname = surname;
+        this.email = email;
         this.password = password;
         this.roles = roles;
     }
@@ -49,6 +53,22 @@ public class User implements UserDetails {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setPassword(String password) {

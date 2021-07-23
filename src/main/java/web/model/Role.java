@@ -7,6 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "roles")
+@NamedQuery(name = "Role.getAll", query = "from Role")
 public class Role implements GrantedAuthority {
 
     @Id
@@ -14,12 +15,16 @@ public class Role implements GrantedAuthority {
     private long id;
     private String name;
 
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+
     public Role() {
     }
 
-    public Role(long id, String name) {
+    public Role(long id, String name, Set<User> users) {
         this.id = id;
         this.name = name;
+        this.users = users;
     }
 
     public long getId() {
@@ -36,6 +41,14 @@ public class Role implements GrantedAuthority {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     @Override

@@ -23,11 +23,11 @@
         <input type="password" th:field="*{password}" id="pass"/>
         <br/>
 
-<!--        <label for="roles">Role</label>-->
-<!--        <select required type="text" multiple name="roles" id="roles">-->
-<!--            <option value="ROLE_ADMIN">ADMIN</option>-->
-<!--            <option value="ROLE_USER">USER</option>-->
-<!--        </select>-->
+        <label for="role">Enter role: </label>
+        <select name="role" multiple id="role">
+            <option th:value="ROLE_ADMIN" th:text="ADMIN"></option>
+            <option th:value="ROLE_USER" th:text="USER"></option>
+        </select>
 
 
         <input type="submit" value="Add">

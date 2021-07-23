@@ -5,8 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import web.dao.RoleDao;
 import web.dao.UserDao;
 import web.model.User;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -14,6 +17,10 @@ public class AdminController {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private RoleDao roleDao;
+
 
 
     @GetMapping
@@ -34,8 +41,11 @@ public class AdminController {
     }
 
     @PostMapping
-    public String create(@ModelAttribute("user") User user) {
-        userDao.addUser(user);
+    public String create(@ModelAttribute("user") User user,
+                         @RequestParam(required = false, name = "role") List<String> role) {
+        System.out.println(user.getName());
+        System.out.println(role);
+        userDao.addUser(user, role);
         return "redirect:/admin";
     }
 
@@ -46,9 +56,11 @@ public class AdminController {
     }
 
     @PatchMapping("/{id}")
-    public String update(Model model, @ModelAttribute("user") User user,
-                         @PathVariable("id") long id) {
-        userDao.updateUser(user, id);
+    public String update(Model model,
+                         @ModelAttribute("user") User user,
+                         @PathVariable("id") long id,
+                         @RequestParam(required = false, name = "role") List<String> role) {
+        userDao.updateUser(user, id, role);
         return "redirect:/admin";
     }
 

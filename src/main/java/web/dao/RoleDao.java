@@ -12,10 +12,8 @@ import java.util.Set;
 @Transactional
 public interface RoleDao {
     Role getRoleByRolename(String rolename);
-
-    public List<Role> rolesList();
-
-    public Set<Role> setupRoles(User user, List<String> roleAdmin);
+    List<Role> rolesList();
+    Set<Role> setupRoles(User user, List<String> roleAdmin);
 
 
 }

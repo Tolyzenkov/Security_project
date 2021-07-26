@@ -5,10 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import web.dao.RoleDao;
 import web.dao.UserDao;
 import web.model.User;
-
 import java.util.List;
 
 @Controller
@@ -17,11 +15,6 @@ public class AdminController {
 
     @Autowired
     private UserDao userDao;
-
-    @Autowired
-    private RoleDao roleDao;
-
-
 
     @GetMapping
     public String usersList(ModelMap model) {

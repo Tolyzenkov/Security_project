@@ -10,15 +10,15 @@ import java.util.List;
 @Component
 @Transactional
 public interface UserDao {
-    public void addUser(User user, List<String> roles);
+    void addUser(User user, List<String> roles);
 
-    public List<User> getAllUsers();
+    List<User> getAllUsers();
 
-    public User getUserById(long id);
+    User getUserById(long id);
 
-    public User getUserByName(String name);
+    User getUserByName(String name);
 
-    public void updateUser(User user, long id, List<String> role);
+    void updateUser(User user, long id, List<String> role);
 
-    public void deleteUser(long id);
+    void deleteUser(long id);
 }

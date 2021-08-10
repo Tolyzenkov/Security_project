@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import web.model.Role;
 import web.model.User;
 
+import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,6 +29,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     //  приведен к классу UserDetails.
     // Для создания UserDetails используется интерфейс UserDetailsService, с единственным методом:
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = userDao.getUserByName(s);
         if (user == null) {
